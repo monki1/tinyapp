@@ -1,3 +1,5 @@
+const {generateRandomString} = require('../helpers/helper');
+
 const urlDatabase = {
   b6UTxQ: {
     longURL: "https://www.tsn.ca",
@@ -21,8 +23,26 @@ const urlsForUser = (userID) => {
   return filteredURLs;
 };
 
+const shortUrlExists = (short) => {
+  return urlDatabase.hasOwnProperty(short);
+};
 
+const userOwnsShortURL = (userID, short) => {
+  return urlDatabase[short].userID === userID;
+}
 
-module.exports = {urlsForUser, };
+const shorten = ( long, userID) => {
+  const urlObject  = {
+    longURL: long,
+    userID: userID,
+  }
+  let short = generateRandomString();
+  while( shortUrlExists(short) ) {
+    short = generateRandomString();
+  }
+  urlDatabase[short] = urlObject;
+};
+
+module.exports = {urlsForUser, shortUrlExists, userOwnsShortURL, newURL: shorten};
 
 

@@ -1,5 +1,5 @@
-const users = require('../../src/persistence/users');
-const urlDatabase = require('../../src/persistence/database');
+const users = require('../../src/database/users');
+const urlDatabase = require('../../src/database/urls');
 const newUrlGet = (req, res) => {
   const user = users.getUserByCookie(req);
   if (! user) {

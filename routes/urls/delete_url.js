@@ -1,6 +1,6 @@
 
-const urlDatabase = require('../../src/persistence/database');
-const users = require('../../src/persistence/users');
+const urlDatabase = require('../../src/database/urls');
+const users = require('../../src/database/users');
 const deleteHandler =  (req, res) => {
   const user = users.getUserByCookie(req);
   const shortURL = req.params.shortURL;

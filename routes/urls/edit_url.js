@@ -1,5 +1,5 @@
-const urlDatabase = require('../../src/persistence/database');
-const users = require('../../src/persistence/users');
+const urlDatabase = require('../../src/database/urls');
+const users = require('../../src/database/users');
 
 const getHandler = (req, res) =>{
   const shortURL = req.params.id;

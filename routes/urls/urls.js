@@ -1,7 +1,7 @@
 
 const cookie = require("../../src/helpers/cookie");
-const users = require("../../src/persistence/users");
-const urls = require("../../src/persistence/database");
+const users = require("../../src/database/users");
+const urls = require("../../src/database/urls");
 
 const urlsGetHandler = (req, res) => {
   const userId = cookie.getUserIDFromCookie(req);

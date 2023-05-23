@@ -1,5 +1,5 @@
 const cookie = require('../src/helpers/cookie');
-const users = require('../src/persistence/users');
+const users = require('../src/database/users');
 
 const registerGetHandler = (req, res) => {
   const user = users.getUserByCookie(req);

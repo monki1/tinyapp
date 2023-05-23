@@ -1,4 +1,4 @@
-const urlDatabase = require('../src/persistence/database');
+const urlDatabase = require('../src/database/urls');
 
 
 const redirectGetHandler =

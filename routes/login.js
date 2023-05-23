@@ -1,6 +1,6 @@
 
 
-const users = require('../src/persistence/users');
+const users = require('../src/database/users');
 const cookie = require('../src/helpers/cookie');
 
 const loginGetHandler = (req, res) => {

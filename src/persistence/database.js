@@ -41,8 +41,14 @@ const shorten = ( long, userID) => {
     short = generateRandomString();
   }
   urlDatabase[short] = urlObject;
+  console.log(urlDatabase[short]);
 };
 
-module.exports = {urlsForUser, shortUrlExists, userOwnsShortURL, newURL: shorten};
+const getLongURL = (shortURL) => {
+  console.log(urlDatabase[shortURL]);
+  return urlDatabase[shortURL].longURL;
+};
+
+module.exports = {urlsForUser, shortUrlExists, userOwnsShortURL, newURL: shorten, getLongURL, databse: urlDatabase};
 
 

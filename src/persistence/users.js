@@ -1,3 +1,9 @@
+const {generateRandomString} = require('../helpers/helper');
+const encryption = require('../helpers/encryption');
+const cookie = require('../helpers/cookie');
+
+
+
 const users = {
   userRandomID: {
     id: "userRandomID",
@@ -31,14 +37,13 @@ const getUserByEmail = (email) => {
 };
 
 
-const {generateRandomString} = require('../helpers/helper');
-const encryption = require('../helpers/encryption');
 
 
 const createUser = (email, password) => {
   if (getUserByEmail(email) !== undefined) {
     return;
   }
+  
   const userId = generateRandomString();
   const newUser = {
     id: userId,
@@ -51,17 +56,24 @@ const createUser = (email, password) => {
 
 const login = (email, password) => {
   const user  = getUserByEmail(email);
-  if (!user || bcrypt.compareSync(user.password, password)) {
+  console.log(user);
+  if (user === undefined || encryption.comparePasswords(user.password, password)) {
     
     return;
   }
   return user;
 };
 
-//create new user (email, password)
-// use
-//is logged in?
+//get user from cookie
+
+const getUserByCookie = (req) => {
+  const userID = cookie.getUserIDFromCookie(req);
+  return getUserByID(userID);
+};
+
+
+
 
 
 //export
-module.exports = {users, getUserByID, getUserByEmail, createUser, login }; //
+module.exports = {users, getUserByID, getUserByEmail, createUser, login, saveIDtoCookie: cookie.saveUserIDtoCookie, getUserByID, getUserByCookie }; //

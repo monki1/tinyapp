@@ -2,8 +2,8 @@ const cookie = require('../src/helpers/cookie');
 const users = require('../src/persistence/users');
 
 const registerGetHandler = (req, res) => {
-  const userID = cookie.getUserIDFromCookie(req); //
-  if (userID) {
+  const user = users.getUserByCookie(req);
+  if (user) {
     res.redirect("/urls");
   }
   res.render('register', {user: undefined});

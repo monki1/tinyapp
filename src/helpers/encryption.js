@@ -1,7 +1,7 @@
 const bcrypt = require("bcryptjs");
 
 const hashPassword = (pswd)=>{
-  bcrypt.hashSync(pswd);
+  return bcrypt.hashSync(pswd, 10);
 };
 
 const comparePasswords = (pswd, hashPswd)=>{

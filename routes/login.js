@@ -4,8 +4,7 @@ const users = require('../src/persistence/users');
 const cookie = require('../src/helpers/cookie');
 
 const loginGetHandler = (req, res) => {
-  const userID = cookie.getUserIDFromCookie(req);
-  const user = users.getUserByID(userID);
+  const user = users.getUserByCookie(req);
   if (user) {
     
     return res.redirect('/urls');
@@ -17,10 +16,10 @@ const loginGetHandler = (req, res) => {
 const loginPostHandler = (req, res) => {
   const {email, password} = req.body;
   const user  = users.login(email, password);
-  if(!user){
+  if (!user) {
     return res.status(400).send(`Invalid email or password`);
   }
-  cookie.saveUserIDtoCookie(user.id);
+  cookie.saveUserIDtoCookie(req, user.id);
   res.redirect('/urls');
 
 };

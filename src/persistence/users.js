@@ -49,10 +49,19 @@ const createUser = (email, password) => {
   return newUser;
 };
 
+const login = (email, password) => {
+  const user  = getUserByEmail(email);
+  if (!user || bcrypt.compareSync(user.password, password)) {
+    
+    return;
+  }
+  return user;
+};
+
 //create new user (email, password)
 // use
 //is logged in?
 
 
 //export
-module.exports = {users, getUserByID, getUserByEmail, createUser }; //
+module.exports = {users, getUserByID, getUserByEmail, createUser, login }; //

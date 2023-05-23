@@ -6,6 +6,7 @@ const login = require('./login');
 const newURL = require('./urls/new_url');
 const redirect = require('./redirect');
 const edit = require('./urls/edit_url');
+const deleteURL = require('./urls/delete_url');
 const helloRoutes = (app)=>{
   app.get("/hello/render", renderHelloGetHandler);
   app.get("/hello", htmlHelloGetHandler);
@@ -16,6 +17,7 @@ const urlRoutes = (app)=>{
   app.get("/urls/new", newURL.get);
   app.post("/urls", newURL.post);
   app.get("/urls", urlsGetHandler);
+  app.post('/urls/:shortURL/delete', deleteURL.post)
 };
 
 const registerRoutes = (app)=>{
@@ -35,8 +37,6 @@ const setUpRoutes = (app) => {
   app.post('/urls/:id', edit.post);
 
   app.get('/u/:id', redirect.get);
-  
-  
 };
 
 

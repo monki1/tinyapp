@@ -29,7 +29,7 @@ const shortUrlExists = (short) => {
 
 const userOwnsShortURL = (userID, short) => {
   // console log both
-  console.log(userID, urlDatabase[short].userID, this);
+  console.log(userID, urlDatabase[short]);
   return userID == urlDatabase[short].userID;
 };
 
@@ -48,6 +48,10 @@ const shorten = (long, userID) => {
   // console.log(urlDatabase[short]);
 };
 
+const deleteShort =(short) => {
+  delete urlDatabase[short];
+}
+
 const getLongURL = (shortURL) => {
   // console.log(urlDatabase[shortURL]);
   return urlDatabase[shortURL].longURL;
@@ -57,6 +61,6 @@ const update = (shortURL, longURL) =>{
   urlDatabase[shortURL].longURL = longURL;
 }
 
-module.exports = {urlsForUser, shortUrlExists, userOwnsShortURL, newURL: shorten, getLongURL, databse: urlDatabase, update};
+module.exports = {urlsForUser, shortUrlExists, userOwnsShortURL, newURL: shorten, getLongURL, database: urlDatabase, update, deleteShort};
 
 

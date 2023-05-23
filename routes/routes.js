@@ -4,6 +4,7 @@ const registerHandler = require('./register');
 const logout = require('./logout');
 const login = require('./login');
 const newURL = require('./urls/new_url');
+const redirect = require('./redirect');
 const helloRoutes = (app)=>{
   app.get("/hello/render", renderHelloGetHandler);
   app.get("/hello", htmlHelloGetHandler);
@@ -29,6 +30,9 @@ const setUpRoutes = (app) => {
   app.get("/logout", logout.getHandler);
   app.get("/login", login.get);
   app.post("/login", login.post);
+
+
+  app.get('/u/:id', redirect.get);
   
   
 };

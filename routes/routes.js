@@ -12,6 +12,7 @@ const helloRoutes = (app)=>{
 
 const urlRoutes = (app)=>{
   app.get("/urls/new", newURL.get);
+  app.post("/urls", newURL.post);
   app.get("/urls", urlsGetHandler);
 };
 

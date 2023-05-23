@@ -1,3 +1,6 @@
+const {setUpRoutes} = require('./routes/routes');
+// const {plainTextHelloGetHandler, htmlHelloGetHandler, renderHelloGetHandler} = require('./routes/hello');
+const cookieSession = require('cookie-session');
 const express = require("express");
 const app = express();
 const PORT = 8080;
@@ -10,6 +13,8 @@ app.use(
     keys: ['key1', 'key2'],
   })
 );
+
+setUpRoutes(app);
 
 
 app.listen(PORT, () => {

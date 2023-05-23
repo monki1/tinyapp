@@ -43,7 +43,7 @@ const createUser = (email, password) => {
   if (getUserByEmail(email) !== undefined) {
     return;
   }
-  
+
   const userId = generateRandomString();
   const newUser = {
     id: userId,
@@ -76,4 +76,4 @@ const getUserByCookie = (req) => {
 
 
 //export
-module.exports = {users, getUserByID, getUserByEmail, createUser, login, saveIDtoCookie: cookie.saveUserIDtoCookie, getUserByID, getUserByCookie }; //
+module.exports = {users, getUserByID, getUserByEmail, createUser, login, saveIDtoCookie: cookie.saveUserIDtoCookie, getUserByCookie }; //

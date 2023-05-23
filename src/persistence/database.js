@@ -48,9 +48,9 @@ const shorten = (long, userID) => {
   // console.log(urlDatabase[short]);
 };
 
-const deleteShort =(short) => {
+const deleteShort = (short) => {
   delete urlDatabase[short];
-}
+};
 
 const getLongURL = (shortURL) => {
   // console.log(urlDatabase[shortURL]);
@@ -59,7 +59,7 @@ const getLongURL = (shortURL) => {
 
 const update = (shortURL, longURL) =>{
   urlDatabase[shortURL].longURL = longURL;
-}
+};
 
 module.exports = {urlsForUser, shortUrlExists, userOwnsShortURL, newURL: shorten, getLongURL, database: urlDatabase, update, deleteShort};
 

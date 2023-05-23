@@ -9,10 +9,7 @@ const generateRandomString = ()=>{
   return result;
 };
 
-const getUserIDFromCookie = (req)=>{
-  return req.session.user_id;
-};
 
 
 
-module.exports = { generateRandomString, getUserIDFromCookie };
+module.exports = { generateRandomString};

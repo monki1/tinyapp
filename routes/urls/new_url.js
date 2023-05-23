@@ -1,14 +1,3 @@
-
-
-
-// const urlsIdGetHandler = (req, res) => {
-//   const id = req.params.id;
-//   const longURL = urlDatabase[id];
-//   const templateVars = { id: id, longURL: longURL[id] };
-//   templateVars.user = ;
-//   return res.render("urls_show", templateVars);
-// };
-
 const users = require('../../src/persistence/users');
 const urlDatabase = require('../../src/persistence/database');
 const newUrlGet = (req, res) => {

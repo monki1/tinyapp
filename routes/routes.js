@@ -3,6 +3,7 @@ const { urlsGetHandler } = require('./urls/urls');
 const registerHandler = require('./register');
 const logout = require('./logout');
 const login = require('./login');
+const newURL = require('./urls/new_url');
 const helloRoutes = (app)=>{
   app.get("/hello/render", renderHelloGetHandler);
   app.get("/hello", htmlHelloGetHandler);
@@ -10,6 +11,7 @@ const helloRoutes = (app)=>{
 };
 
 const urlRoutes = (app)=>{
+  app.get("/urls/new", newURL.get);
   app.get("/urls", urlsGetHandler);
 };
 
@@ -26,6 +28,7 @@ const setUpRoutes = (app) => {
   app.get("/logout", logout.getHandler);
   app.get("/login", login.get);
   app.post("/login", login.post);
+  
   
 };
 

@@ -24,31 +24,39 @@ const urlsForUser = (userID) => {
 };
 
 const shortUrlExists = (short) => {
-  return urlDatabase.hasOwnProperty(short);
+  return urlDatabase[short] !== undefined;
 };
 
 const userOwnsShortURL = (userID, short) => {
-  return urlDatabase[short].userID === userID;
-}
+  // console log both
+  console.log(userID, urlDatabase[short].userID, this);
+  return userID == urlDatabase[short].userID;
+};
 
-const shorten = ( long, userID) => {
+const shorten = (long, userID) => {
   const urlObject  = {
     longURL: long,
     userID: userID,
-  }
+  };
   let short = generateRandomString();
-  while( shortUrlExists(short) ) {
+  while (shortUrlExists(short)) {
     short = generateRandomString();
   }
   urlDatabase[short] = urlObject;
-  console.log(urlDatabase[short]);
+  return urlObject;
+  // console.log(urlDatabase);
+  // console.log(urlDatabase[short]);
 };
 
 const getLongURL = (shortURL) => {
-  console.log(urlDatabase[shortURL]);
+  // console.log(urlDatabase[shortURL]);
   return urlDatabase[shortURL].longURL;
 };
 
-module.exports = {urlsForUser, shortUrlExists, userOwnsShortURL, newURL: shorten, getLongURL, databse: urlDatabase};
+const update = (shortURL, longURL) =>{
+  urlDatabase[shortURL].longURL = longURL;
+}
+
+module.exports = {urlsForUser, shortUrlExists, userOwnsShortURL, newURL: shorten, getLongURL, databse: urlDatabase, update};
 
 

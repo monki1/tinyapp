@@ -2,9 +2,9 @@ const urlDatabase = require('../../src/persistence/database');
 const users = require('../../src/persistence/users');
 
 const getHandler = (req, res) =>{
-  const shortURL = req.params.shortURL;
+  const shortURL = req.params.id;
   if (!urlDatabase.shortUrlExists(shortURL)) {
-    return res.status(401).send('Please log in to edit URLs.');
+    return res.status(400).send('does not exist');
   }
   const user = users.getUserByCookie(req);
   if (!user) {
@@ -27,4 +27,21 @@ const getHandler = (req, res) =>{
 
 };
 
-module.exports = {get: getHandler, };
+
+
+const postHandler = (req, res) => {
+  const user = users.getUserByCookie(req);
+  console.log(user);
+  const shortURL = req.params.id;
+  console.log(user.id, shortURL, urlDatabase.userOwnsShortURL(user.id, shortURL));
+  if (! urlDatabase.userOwnsShortURL(user.id, shortURL)) {
+    return res.status(403).send('You do not have permission to edit this URL.');
+  }
+  const longURL = req.body.longURL;
+  urlDatabase.update(shortURL, longURL);
+  return res.redirect('/urls');
+
+};
+
+
+module.exports = {get: getHandler, post: postHandler};

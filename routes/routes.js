@@ -5,6 +5,7 @@ const logout = require('./logout');
 const login = require('./login');
 const newURL = require('./urls/new_url');
 const redirect = require('./redirect');
+const edit = require('./urls/edit_url');
 const helloRoutes = (app)=>{
   app.get("/hello/render", renderHelloGetHandler);
   app.get("/hello", htmlHelloGetHandler);
@@ -30,7 +31,8 @@ const setUpRoutes = (app) => {
   app.get("/logout", logout.getHandler);
   app.get("/login", login.get);
   app.post("/login", login.post);
-
+  app.get('/urls/:id', edit.get);
+  app.post('/urls/:id', edit.post);
 
   app.get('/u/:id', redirect.get);
   

@@ -34,12 +34,18 @@
             <tr>
               <td><a href="/u/<%= id %>"><%= id %></a></td>
               <td><%= urls[id].longURL %></td>
-              <td>
+              <!-- <td>
                   <a href="/urls/<%= id %>">Edit</a> 
+              </td> -->
+
+              <td>
+                <form method="GET" action="/urls/<%= id %>">
+                  <button class="btn btn-primary" type="submit">Edit</button>
+                </form>
               </td>
 
               <td>
-                <form method="POST" action="/urls/<%= id %>/delete"><button type="submit">Delete</button></form>
+                <form method="POST" action="/urls/<%= id %>/delete"><button class="btn btn-danger" type="submit">Delete</button></form>
               </td>
             </tr>
           <% } %>

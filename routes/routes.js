@@ -17,7 +17,7 @@ const urlRoutes = (app)=>{
   app.get("/urls/new", newURL.get);
   app.post("/urls", newURL.post);
   app.get("/urls", urlsGetHandler);
-  app.post('/urls/:shortURL/delete', deleteURL.post)
+  app.post('/urls/:shortURL/delete', deleteURL.post);
 };
 
 const registerRoutes = (app)=>{

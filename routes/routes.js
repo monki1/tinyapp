@@ -1,6 +1,7 @@
 const {plainTextHelloGetHandler, htmlHelloGetHandler, renderHelloGetHandler} = require('./hello');
 const { urlsGetHandler } = require('./urls/urls');
 const registerHandler = require('./register');
+const logout = require('./logout');
 const helloRoutes = (app)=>{
   app.get("/hello/render", renderHelloGetHandler);
   app.get("/hello", htmlHelloGetHandler);
@@ -20,6 +21,8 @@ const setUpRoutes = (app) => {
   helloRoutes(app);
   urlRoutes(app);
   registerRoutes(app);
+  //logout
+  app.get("/logout", logout.getHandler);
   
 };
 
